@@ -1,18 +1,18 @@
-/* Общий стиль страницы */
+/* Общие стили */
 body {
     font-family: 'Georgia', serif;
     margin: 0;
     padding: 0;
-    background-color: #fff8f0;
+    background-color: #fffaf0;
     color: #5a3e36;
+    text-align: center;
 }
 
 /* Шапка сайта */
 header {
-    background: linear-gradient(90deg, #ffb6c1, #ff7f50);
+    background: linear-gradient(90deg, #ff9a8b, #ff6a88, #ff99ac);
     color: white;
-    text-align: center;
-    padding: 40px 0;
+    padding: 50px 0;
     font-size: 36px;
     font-weight: bold;
     text-transform: uppercase;
@@ -28,35 +28,35 @@ header {
     padding: 50px 20px;
 }
 
-/* Стили карточки товара */
+/* Карточка товара */
 .product {
-    background: #ffede1;
+    background: #ffebe0;
     border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     overflow: hidden;
     max-width: 300px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     text-align: center;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
 .product:hover {
     transform: scale(1.05);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
 /* Изображение товара */
 .product img {
     width: 100%;
-    height: 260px;
+    height: 250px;
     object-fit: cover;
-    border-bottom: 5px solid #e57373;
+    border-bottom: 5px solid #ff6a88;
     border-radius: 20px 20px 0 0;
 }
 
 /* Заголовок товара */
 .product h2 {
     font-size: 24px;
-    color: #c0392b;
+    color: #d72638;
     margin: 20px 0 10px;
 }
 
@@ -65,7 +65,7 @@ header {
     font-size: 16px;
     color: #6b3f2e;
     padding: 0 20px;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 /* Цена товара */
@@ -79,30 +79,32 @@ header {
 
 /* Кнопка покупки */
 button {
-    background: linear-gradient(90deg, #ff7f50, #ff6f61);
+    background: linear-gradient(90deg, #ff6a88, #ff99ac);
     color: white;
     border: none;
     padding: 15px 35px;
     font-size: 18px;
     cursor: pointer;
     border-radius: 50px;
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     margin-bottom: 20px;
     font-weight: bold;
+    outline: none;
+    border: 2px solid transparent;
 }
 
 button:hover {
-    background: linear-gradient(90deg, #ff6f61, #ff4757);
+    background: linear-gradient(90deg, #ff4757, #ff6a88);
     transform: scale(1.1);
+    border: 2px solid #ff4757;
 }
 
 /* Подвал сайта */
 footer {
     background: #5a3e36;
     color: white;
-    text-align: center;
     padding: 20px 0;
     font-size: 18px;
-    margin-top: 50px;
     font-style: italic;
+    margin-top: 50px;
 }
