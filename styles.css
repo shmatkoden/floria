@@ -1,0 +1,108 @@
+/* Общий стиль страницы */
+body {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff8f0;
+    color: #5a3e36;
+}
+
+/* Шапка сайта */
+header {
+    background: linear-gradient(90deg, #ffb6c1, #ff7f50);
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Контейнер товаров */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px 20px;
+}
+
+/* Стили карточки товара */
+.product {
+    background: #ffede1;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* Изображение товара */
+.product img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-bottom: 5px solid #e57373;
+    border-radius: 20px 20px 0 0;
+}
+
+/* Заголовок товара */
+.product h2 {
+    font-size: 24px;
+    color: #c0392b;
+    margin: 20px 0 10px;
+}
+
+/* Описание товара */
+.product p {
+    font-size: 16px;
+    color: #6b3f2e;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+/* Цена товара */
+.price {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin: 15px 0;
+}
+
+/* Кнопка покупки */
+button {
+    background: linear-gradient(90deg, #ff7f50, #ff6f61);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: 0.3s ease-in-out;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ff6f61, #ff4757);
+    transform: scale(1.1);
+}
+
+/* Подвал сайта */
+footer {
+    background: #5a3e36;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 18px;
+    margin-top: 50px;
+    font-style: italic;
+}
