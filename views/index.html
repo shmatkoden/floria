@@ -123,6 +123,9 @@
     </div>
     
     <p id="responseMessage"></p>
+    <div id="loadingSpinner" class="hidden">
+        <p>Зачекайте, обробка заявки...</p>
+    </div>
     
     <script>
         const URL_APP = "https://script.google.com/macros/s/AKfycbzhAclGY4oDsnMfN8E_cMsW5Z6kE8ezK2auQkWGNmjZKjXjVzLO_4hI4__U_FsXlAG3/exec";
@@ -140,6 +143,7 @@
         const responseMessage = document.getElementById("responseMessage");
         const messageModal = document.querySelector("#messageModal");
         const closeMessage = document.querySelector("#closeMessage");
+        const loadingSpinner = document.getElementById("loadingSpinner");
     
         // Открытие формы при выборе товара
         buyButtons.forEach(button => {
@@ -195,6 +199,7 @@
         // Отправка формы
         form.addEventListener("submit", async (ev) => {
             ev.preventDefault();
+            loadingSpinner.classList.remove("hidden");
     
             const name = document.querySelector("[name=name]").value.trim();
             const phone = document.querySelector("[name=phone]").value.trim();
@@ -244,6 +249,7 @@
                 responseMessage.style.color = "red";
                 responseMessage.innerText = "Помилка при відправці даних.";
             }
+            loadingSpinner.classList.add("hidden");
         });
     
         // Открытие модального окна с сообщением

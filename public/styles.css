@@ -288,3 +288,21 @@ button#cancelButton:hover {
   border-radius: 15px; /* Закругленные углы */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Легкая тень для эстетики */
 }
+#loadingSpinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  font-size: 20px;
+  text-align: center;
+  z-index: 1002;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+  display: none;
+}
