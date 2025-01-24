@@ -7,41 +7,52 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <h1>Залишити заявку!</h1>
+    <h1>Магазин Floria</h1>
+    <div class="video-container">
+        <video autoplay loop muted playsinline>
+            <source src="/images/IMG_0679.MP4" type="video/mp4">
+            Ваш браузер не поддерживает тег видео.
+        </video>
+    </div>
     
     <div class="container">
-        <div class="product" data-product="Комплект (Синій)" data-price="599 грн">
-            <img src="/images/bluecolor.png" alt="Синій комплект">
+        <div class="product" data-product="Тюльпани (Синій)" data-price="370/485 грн">
+            <img src="/images/bluecolor.png" alt="Синій тюльпан">
             <div class="product-info">
-                <h2>Комплект (Синій)</h2>
-                <p>Ціна: 599 грн</p>
+                <h2>Тюльпан (Синій)</h2>
+                <p>Ціна: 370 грн</p>
+                <p>Ціна ЗІБРАНОГО: 485 грн</p>
             </div>
             <button class="buyButton">Купити</button>
         </div>
 
-        <div class="product" data-product="Комплект (Фіолетовий)" data-price="649 грн">
-            <img src="/images/violetecolor.png" alt="Фіолетовий комплект">
+        <div class="product" data-product="Тюльпани (Фіолетовий)" data-price="370/485 грн">
+            <img src="/images/violetecolor.png" alt="Фіолетовий тюльпан">
             <div class="product-info">
-                <h2>Комплект (Фіолетовий)</h2>
-                <p>Ціна: 649 грн</p>
+                <h2>Тюльпан (Фіолетовий)</h2>
+                <p>Ціна: 370 грн</p>
+                <p>Ціна ЗІБРАНОГО: 485 грн</p>
             </div>
             <button class="buyButton">Купити</button>
         </div>
 
-        <div class="product" data-product="Комплект (Оранжевий)" data-price="699 грн">
-            <img src="/images/orangecolor.png" alt="Оранжевий комплект">
+        <div class="product" data-product="Тюльпани (Оранжевий)" data-price="370/485 грн">
+            <img src="/images/orangecolor.png" alt="Оранжевий тюльпан">
             <div class="product-info">
-                <h2>Комплект (Оранжевий)</h2>
-                <p>Ціна: 699 грн</p>
+                <h2>Тюльпан (Оранжевий)</h2>
+                <p>Ціна: 370 грн</p>
+                <p>Ціна ЗІБРАНОГО: 485 грн</p>
             </div>
             <button class="buyButton">Купити</button>
         </div>
 
-        <div class="product" data-product="Комплект (Складний)" data-price="749 грн">
-            <img src="/images/difficultcolor.png" alt="Складний комплект">
+        <div class="product" data-product="Тюльпани (Різнокольоровий)" data-price="370/485 грн">
+            <img src="/images/dif.jpg" alt="Різнокольоровий тюльпан">
             <div class="product-info">
-                <h2>Комплект (Складний)</h2>
-                <p>Ціна: 749 грн</p>
+                <h2>Тюльпани (Різнокольоровий)</h2>
+                <p>Ціна: 370 грн</p>
+                <p>Ціна ЗІБРАНОГО: 485 грн</p>
+
             </div>
             <button class="buyButton">Купити</button>
         </div>
@@ -63,8 +74,8 @@
         <div class="row">
             <label>🤙 Номер телефону</label>
             <input type="text" name="phone" placeholder="+38..." required 
-                   autocomplete="off" minlength="10" maxlength="13" 
-                   pattern="\+38[0-9]{10}" title="Формат: +380XXXXXXXXX" />
+                   autocomplete="off" minlength="10" maxlength="12" 
+                   />
         </div>
 
         <div class="row">
@@ -102,7 +113,15 @@
             <button type="button" id="cancelButton">❌ Скасувати</button>
         </div>
     </form>
-
+    <div id="messageModal" class="hidden">
+        <div class="modal-content">
+            <p>☺️ Будь ласка, перевіряйте тюльпани під час отримання на пошті. У разі виявлення тріщин чи пошкоджень оформіть повернення як пошкоджений товар, і ми безкоштовно надішлемо вам новий.</p>
+            <p>🔺 Зверніть увагу: якщо тюльпани вже забрані з пошти, повернення здійснити неможливо.</p>
+            <p>👁️‍🗨️ Примітка: тюльпани закріплені на дні коробки, тому можливі незначні подряпини або плями на цій частині – це нормально. Перевіряйте, будь ласка, бокові сторони та верхню частину.</p>
+            <button id="closeMessage">Закрити</button>
+        </div>
+    </div>
+    
     <p id="responseMessage"></p>
     
     <script>
@@ -119,6 +138,8 @@
         const novaPoshtaDetails = document.querySelector("#novaPoshtaDetails");
         const ukrPoshtaDetails = document.querySelector("#ukrPoshtaDetails");
         const responseMessage = document.getElementById("responseMessage");
+        const messageModal = document.querySelector("#messageModal");
+        const closeMessage = document.querySelector("#closeMessage");
     
         // Открытие формы при выборе товара
         buyButtons.forEach(button => {
@@ -213,6 +234,8 @@
                 if (result.type === "success") {
                     responseMessage.style.color = "green";
                     responseMessage.innerText = "Дякуємо за вашу заявку!";
+                    closeForm();
+                    showMessageModal();
                 } else {
                     responseMessage.style.color = "red";
                     responseMessage.innerText = `Помилка: ${result.errors}`;
@@ -221,10 +244,18 @@
                 responseMessage.style.color = "red";
                 responseMessage.innerText = "Помилка при відправці даних.";
             }
-    
-            closeForm();
         });
+    
+        // Открытие модального окна с сообщением
+        function showMessageModal() {
+            messageModal.style.display = "block";
+        }
+    
+        // Закрытие модального окна
+        closeMessage.addEventListener("click", () => {
+            messageModal.style.display = "none";
+        });
+    
     </script>
-
 </body>
 </html>
